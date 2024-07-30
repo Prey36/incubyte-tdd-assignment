@@ -12,9 +12,17 @@ function add(numbers) {
 
     let ans = 0;   
     // Iterate through the string, assuming numbers are separated by delimiters
-    for (let charindex = 0; charindex < numbers.length; charindex += 2) {
-        let sum_at_charindex = numbers[charindex];
-        ans += parseInt(sum_at_charindex, 10); 
+    for (let charindex = 0; charindex < numbers.length; charindex++) {
+        if(numbers[charindex] == '\n'){
+            continue
+        }
+        if(numbers[charindex] == ','){
+            continue
+        }
+        console.log(numbers[charindex])
+        let number_at_charindex = numbers[charindex];
+        console.log(number_at_charindex);
+        ans += parseInt(number_at_charindex, 10); 
     }
     return ans;
 }

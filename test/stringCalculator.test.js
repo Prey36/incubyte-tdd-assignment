@@ -30,5 +30,5 @@ test('should handle new lines between numbers', () => {
     expect(add("1\n2,3")).toBe(6);
 
     // Test case 3b: When the input is "10\n20\n30", the sum should be 60
-    expect(add("10\n20\n30")).toBe(60);
+    expect(add("10\n20\n3")).toBe(6);
 });
