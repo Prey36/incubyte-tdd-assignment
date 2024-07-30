@@ -50,3 +50,12 @@ test('should handle custom delimiter ";"', () => {
     // Test case 6a: When the input is "//;\n1;2", the sum should be 3
     expect(add("//;\n1;2")).toBe(3);  // 1 + 2 = 3
 });
+
+// Test case 7: Check if the add function correctly handles custom multi-character delimiters with different formats
+test('should handle custom multi-character delimiters with different formats', () => {
+    // Test case 7a: Single custom delimiter enclosed in square brackets
+    expect(add("//[;]\n1;2;3")).toBe(6);
+
+    // Test case 7b: Multi-character custom delimiter enclosed in square brackets
+    expect(add("//[***]\n1***2***3")).toBe(6);
+});

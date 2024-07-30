@@ -14,7 +14,7 @@ function add(numbers) {
     // Check if the input starts with custom delimiter specification
     if (numbers.startsWith("//")) {
         delimiter = numbers[2]; // Extract custom delimiter
-        start = 3; // Move past the delimiter specification
+        start = 2; // Move past the delimiter specification
     }
     let ans = 0,temp_ans=0;   
 
