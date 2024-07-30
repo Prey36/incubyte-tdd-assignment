@@ -8,11 +8,19 @@ function add(numbers) {
     // Check if the input string is empty
     if(numbers == "")
         return 0;
+    let delimiter = /[,\n]/; // Default delimiter is comma or newline
+    let start = 0;
 
+    // Check if the input starts with custom delimiter specification
+    if (numbers.startsWith("//")) {
+        delimiter = numbers[2]; // Extract custom delimiter
+        start = 3; // Move past the delimiter specification
+    }
     let ans = 0,temp_ans=0;   
+
     // Iterate through the string, assuming numbers are separated by delimiters
-    for (let charindex = 0; charindex < numbers.length; charindex++) {
-        if(numbers[charindex] == ',' || numbers[charindex] == '\n'){
+    for (let charindex = start; charindex < numbers.length; charindex++) {
+        if(numbers[charindex] == ',' || numbers[charindex] == '\n'|| numbers[charindex] === delimiter){
             ans+=temp_ans;
             temp_ans = 0;
             continue
