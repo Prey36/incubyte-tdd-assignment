@@ -1,4 +1,3 @@
-
 /**
  * Function to sum all numbers in a string.
  * 
@@ -10,20 +9,18 @@ function add(numbers) {
     if(numbers == "")
         return 0;
 
-    let ans = 0;   
+    let ans = 0,temp_ans=0;   
     // Iterate through the string, assuming numbers are separated by delimiters
     for (let charindex = 0; charindex < numbers.length; charindex++) {
-        if(numbers[charindex] == '\n'){
+        if(numbers[charindex] == ',' || numbers[charindex] == '\n'){
+            ans+=temp_ans;
+            temp_ans = 0;
             continue
         }
-        if(numbers[charindex] == ','){
-            continue
-        }
-        console.log(numbers[charindex])
         let number_at_charindex = numbers[charindex];
-        console.log(number_at_charindex);
-        ans += parseInt(number_at_charindex, 10); 
+        temp_ans =  temp_ans*10 + parseInt(number_at_charindex, 10); 
     }
+    ans+=temp_ans;
     return ans;
 }
 
