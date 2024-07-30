@@ -75,3 +75,11 @@ test('should handle custom multi-character delimiters with different formats', (
 });
 
 
+// Test case 8: Check if the add function throws an exception for negative numbers
+test('should throw an exception for negative numbers', () => {
+    // Test case 8a: Single negative number
+    // Input: "1,-2,3"
+    // Expected output: Error with message "Negative numbers not allowed: -2"
+    expect(() => add("1,-2,3")).toThrow("Negative numbers not allowed: -2");
+});
+
