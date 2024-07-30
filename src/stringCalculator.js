@@ -33,6 +33,26 @@ function add(numbers) {
         } else {
             // Single-character delimiter
             let singleDelimiter = delimiterSection;
+            // Handle the specific case where the delimiter is a negative sign ("-")
+            // and negative numbers are included in the string.
+            if (singleDelimiter == '-') {
+                for (let charindex = 3; charindex < numbers.length - 1; charindex++) {
+                    // Check for occurrences of "--" which indicates a negative number in the string
+                    if (numbers[charindex] == '-' && numbers[charindex + 1] == '-') {
+                        let tempNum = '-';
+                        charindex += 2;
+                        // Extract the digits following the "--" to form the negative number
+                        while (charindex < numbers.length && (numbers[charindex] >= '0' && numbers[charindex] <= '9')) {
+                            tempNum += numbers[charindex];
+                            charindex++;
+                        }
+                        // Move back one step to adjust the main loop index
+                        charindex--;
+
+                        negativeNumbers.push(parseInt(tempNum, 10));
+                    }
+                }
+            }
             numbers = numbers.slice(delimiterEndIndex + 1).split(singleDelimiter).join(',');
         }
         start = 0; // After delimiter specification, start processing from the beginning
