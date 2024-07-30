@@ -15,3 +15,12 @@ test('should return the number itself for a single number', () => {
     // Test case 2b: When the input is "5"
     expect(add("5")).toBe(5);
 });
+
+// Test case 3: Check if the add function returns the correct sum for comma-separated numbers
+test('should return the correct sum for comma-separated numbers', () => {
+    // Test case 2a: When the input is "1,2", the sum should be 3
+    expect(add("1,2")).toBe(3);
+    // Test case 2b: When the input is "5,6", the sum should be 11
+    expect(add("5,6")).toBe(11);
+});
+
