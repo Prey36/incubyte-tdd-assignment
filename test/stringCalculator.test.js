@@ -30,5 +30,17 @@ test('should handle new lines between numbers', () => {
     expect(add("1\n2,3")).toBe(6);
 
     // Test case 3b: When the input is "10\n20\n30", the sum should be 60
-    expect(add("10\n20\n3")).toBe(6);
+    expect(add("1\n2\n3")).toBe(6);
+});
+
+// Test case 5: Check if the add function correctly handles multi-digit numbers with mixed delimiters
+test('should handle multi-digit numbers with mixed delimiters', () => {
+    // Test case 5a: When the input is "12,25\n7", the sum should be 44
+    expect(add("12,25\n7")).toBe(44);
+
+    // Test case 5b: When the input is "100\n200,300", the sum should be 600
+    expect(add("100\n200,300")).toBe(600);
+
+    // Test case 5c: When the input is "1,22,333\n444", the sum should be 800
+    expect(add("1,22,333\n444")).toBe(800);
 });
