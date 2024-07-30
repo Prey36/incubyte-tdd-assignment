@@ -71,7 +71,7 @@ test('should handle custom multi-character delimiters with different formats', (
     // Test case 7d: Custom delimiter with multiple characters and mixed brackets
     // Input: "//[;;][%%]\n1;;2%%3"
     // Expected output: 6 (1 + 2 + 3 = 6)
-    expect(add("//[;;][%%]\n1;;2%%3")).toBe(6);
+    expect(add("//[**][%%]\n1**2%%3")).toBe(6);
 });
 
 
@@ -90,3 +90,9 @@ test('should throw error for negative numbers when delimiter is "-"', () => {
     expect(() => add("//-\n1-2-3-4-5-6-7-8-9--10--15")).toThrow("Negative numbers not allowed: -10, -15");
 });
 
+
+// Test case 10: Check if numbers greater than 1000 are ignored
+test('should ignore numbers greater than 1000', () => {
+    expect(add("1000,2000,3000")).toBe(1000); // 2000 and 3000 are ignored
+    expect(add("999,1001,500")).toBe(1499); // 1001 is ignored
+});
