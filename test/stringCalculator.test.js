@@ -54,8 +54,24 @@ test('should handle custom delimiter ";"', () => {
 // Test case 7: Check if the add function correctly handles custom multi-character delimiters with different formats
 test('should handle custom multi-character delimiters with different formats', () => {
     // Test case 7a: Single custom delimiter enclosed in square brackets
+    // Input: "//[;]\n1;2;3"
+    // Expected output: 6 (1 + 2 + 3 = 6)
     expect(add("//[;]\n1;2;3")).toBe(6);
 
     // Test case 7b: Multi-character custom delimiter enclosed in square brackets
+    // Input: "//[***]\n1***2***3"
+    // Expected output: 6 (1 + 2 + 3 = 6)
     expect(add("//[***]\n1***2***3")).toBe(6);
+
+    // Test case 7c: Custom delimiter with multiple characters in brackets and mixed delimiters
+    // Input: "//[abc][de]\n1abc2de3"
+    // Expected output: 6 (1 + 2 + 3 = 6)
+    expect(add("//[abc][de]\n1abc2de3")).toBe(6);
+
+    // Test case 7d: Custom delimiter with multiple characters and mixed brackets
+    // Input: "//[;;][%%]\n1;;2%%3"
+    // Expected output: 6 (1 + 2 + 3 = 6)
+    expect(add("//[;;][%%]\n1;;2%%3")).toBe(6);
 });
+
+
