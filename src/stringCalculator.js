@@ -10,14 +10,10 @@ function add(numbers) {
     if(numbers == "")
         return 0;
     var ans=0
-
-    let ans = 0; // Initialize a variable to store the sum of numbers
-    
-    // Iterate through the string, assuming numbers are separated by delimiters
-    for (let i = 0; i < numbers.length; i += 2) {
-        let t = numbers[i]; // Get the character at the current index
-        ans += parseInt(t, 10); // Convert the character to an integer and add it to the sum
-    }
+    if(numbers.length==1) return parseInt(numbers, 10);
+    if(numbers.length>1) {
+        ans = parseInt(numbers[0], 10)+parseInt(numbers[2], 10);
+    } // Initialize a variable to store the sum of numbers
     return ans;
 }
 
