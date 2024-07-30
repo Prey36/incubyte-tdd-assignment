@@ -24,3 +24,11 @@ test('should return the correct sum for comma-separated numbers', () => {
     expect(add("5,6")).toBe(11);
 });
 
+// Test case 4: Check if the add function correctly handles new lines between numbers
+test('should handle new lines between numbers', () => {
+    // Test case 3a: When the input is "1\n2,3", the sum should be 6
+    expect(add("1\n2,3")).toBe(6);
+
+    // Test case 3b: When the input is "10\n20\n30", the sum should be 60
+    expect(add("10\n20\n30")).toBe(60);
+});
