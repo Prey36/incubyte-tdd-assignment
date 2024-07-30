@@ -44,11 +44,26 @@ function add(numbers) {
     // Initialize variables for summing numbers
     let ans = 0;
     let tempNumber = '';
-
+    let negativeNumbers = []; // Array to collect negative numbers
     // Iterate through the string to handle delimiters and sum the numbers
     for (let charindex = start; charindex < numbers.length; charindex++) {
         const char = numbers[charindex];
+        if (char === '-') {
+            // Handle multi-digit negative numbers
+            let tempNum = '-'; // Start with '-' to indicate negative number
+            charindex++;
+            while (charindex < numbers.length && (numbers[charindex] >= '0' && numbers[charindex] <= '9')) {
+                tempNum += numbers[charindex];
+                charindex++;
+            }
+            // Move back one step to adjust the main loop
+            charindex--;
 
+            // Add the negative number to the list
+            negativeNumbers.push(parseInt(tempNum, 10));
+            tempNumber = ''; // Reset tempNumber
+            continue;
+        }
         // Check if the current character is a delimiter
         if (char === ',' || char === '\n') {
             if (tempNumber) {
@@ -65,7 +80,10 @@ function add(numbers) {
     if (tempNumber) {
         ans += parseInt(tempNumber, 10);
     }
-
+    // Throw an error if there are any negative numbers
+    if (negativeNumbers.length > 0) {
+        throw new Error("Negative numbers not allowed: " + negativeNumbers.join(", "));
+    }
     return ans;
 }
 
