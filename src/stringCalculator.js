@@ -63,7 +63,7 @@ function add(numbers) {
     if (negativeNumbers.length > 0) {
         throw new Error("Negative numbers not allowed: " + negativeNumbers.join(", "));
     }
-    console.log(numbers)
+
     // Initialize variables for summing numbers
     let ans = 0;
     let tempNumber = '';
@@ -90,7 +90,11 @@ function add(numbers) {
         // Check if the current character is a delimiter
         if (char === ',' || char === '\n') {
             if (tempNumber) {
-                ans += parseInt(tempNumber, 10);
+                let number = parseInt(tempNumber, 10);
+                // Ignore numbers greater than 1000
+                if (number <= 1000) {
+                    ans += number;
+                }
                 tempNumber = '';
             }
         } else {
@@ -101,7 +105,11 @@ function add(numbers) {
 
     // Add the last number to the total if any
     if (tempNumber) {
-        ans += parseInt(tempNumber, 10);
+        let number = parseInt(tempNumber, 10);
+        // Ignore numbers greater than 1000
+        if (number <= 1000) {
+            ans += number;
+        }
     }
     // Throw an error if there are any negative numbers
     if (negativeNumbers.length > 0) {
@@ -111,3 +119,4 @@ function add(numbers) {
 }
 
 module.exports = { add };
+
