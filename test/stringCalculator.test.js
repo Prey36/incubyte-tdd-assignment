@@ -83,3 +83,10 @@ test('should throw an exception for negative numbers', () => {
     expect(() => add("1,-2,3")).toThrow("Negative numbers not allowed: -2");
 });
 
+
+// Test case 9: Delimiter as a negative sign with negative numbers
+test('should throw error for negative numbers when delimiter is "-"', () => {
+    // Using "-" as the delimiter between numbers and including a negative number
+    expect(() => add("//-\n1-2-3-4-5-6-7-8-9--10--15")).toThrow("Negative numbers not allowed: -10, -15");
+});
+

@@ -9,7 +9,7 @@ function add(numbers) {
     if (numbers === "") return 0;
 
     let start = 0;
-
+    let negativeNumbers = []; // Array to collect negative numbers
     // Check if the input starts with custom delimiter specification
     if (numbers.startsWith("//")) {
         let delimiterEndIndex = numbers.indexOf('\n');
@@ -40,11 +40,14 @@ function add(numbers) {
         // Replace newline with a comma
         numbers = numbers.replace(/\n/g, ',');
     }
-
+    if (negativeNumbers.length > 0) {
+        throw new Error("Negative numbers not allowed: " + negativeNumbers.join(", "));
+    }
+    console.log(numbers)
     // Initialize variables for summing numbers
     let ans = 0;
     let tempNumber = '';
-    let negativeNumbers = []; // Array to collect negative numbers
+
     // Iterate through the string to handle delimiters and sum the numbers
     for (let charindex = start; charindex < numbers.length; charindex++) {
         const char = numbers[charindex];
