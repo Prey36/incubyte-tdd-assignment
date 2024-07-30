@@ -6,7 +6,9 @@
  * @returns {number} The sum of the numbers. If the input is an empty string, returns 0.
  */
 function add(numbers) {
-    return 0;
+    if(numbers == "")
+        return 0;
+    return  parseInt(numbers, 10);
 }
 
 module.exports = { add };
