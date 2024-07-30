@@ -44,3 +44,9 @@ test('should handle multi-digit numbers with mixed delimiters', () => {
     // Test case 5c: When the input is "1,22,333\n444", the sum should be 800
     expect(add("1,22,333\n444")).toBe(800);
 });
+
+// Test case 6: Custom delimiter ";" with numbers separated by ";"
+test('should handle custom delimiter ";"', () => {
+    // Test case 6a: When the input is "//;\n1;2", the sum should be 3
+    expect(add("//;\n1;2")).toBe(3);  // 1 + 2 = 3
+});
