@@ -9,11 +9,13 @@ function add(numbers) {
     // Check if the input string is empty
     if(numbers == "")
         return 0;
-    var ans=0
-    if(numbers.length==1) return parseInt(numbers, 10);
-    if(numbers.length>1) {
-        ans = parseInt(numbers[0], 10)+parseInt(numbers[2], 10);
-    } // Initialize a variable to store the sum of numbers
+
+    let ans = 0;   
+    // Iterate through the string, assuming numbers are separated by delimiters
+    for (let charindex = 0; charindex < numbers.length; charindex += 2) {
+        let sum_at_charindex = numbers[charindex];
+        ans += parseInt(sum_at_charindex, 10); 
+    }
     return ans;
 }
 
