@@ -104,3 +104,28 @@ test('should throw an error for missing numbers between delimiters', () => {
     expect(() => add("1,\n2")).toThrow("Invalid input format");
     expect(() => add("1\n,2")).toThrow("Invalid input format");
 });
+
+// New test case 13: Invalid input with improperly formatted custom delimiters
+test('should throw an error for improperly formatted custom delimiters', () => {
+    expect(() => add("//;\n1;2;")).toThrow("Invalid input format");
+    expect(() => add("//[**]\n1**2**")).toThrow("Invalid input format");
+});
+
+// Test case 14: Invalid input with random delimiters
+test('should throw an error for input with random delimiters', () => {
+    expect(() => add("1#2$3")).toThrow("Invalid input format");
+    expect(() => add("4&5*6")).toThrow("Invalid input format");
+});
+
+
+// Test case 15: Custom delimiter not properly closed
+test('should throw an error for custom delimiter not properly closed', () => {
+    expect(() => add("//[***\n1***2***3")).toThrow("Invalid input format");
+    expect(() => add("//[%%\n4%%5%%6")).toThrow("Invalid input format");
+});
+
+// Test case 16: Multiple custom delimiters not properly closed
+test('should throw an error for multiple custom delimiters not properly closed', () => {
+    expect(() => add("//[***][%%\n1***2%%3")).toThrow("Invalid input format");
+    expect(() => add("//[abc][def\n4abc5def6")).toThrow("Invalid input format");
+});

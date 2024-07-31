@@ -30,7 +30,11 @@ function add(numbers) {
             });
 
             numbers = tempNumbers;
-        } else {
+        } 
+        else if (delimiterSection.startsWith('[')){
+            throw new Error("Invalid input format");
+        }
+        else {
             // Single-character delimiter
             let singleDelimiter = delimiterSection;
             // Handle the specific case where the delimiter is a negative sign ("-")
@@ -113,6 +117,9 @@ function add(numbers) {
         } else if (char_of_numbers >= '0' && char_of_numbers <= '9') {
             // Build the current number from the string
             tempNumber += char_of_numbers;
+        }
+        else {
+            throw new Error("Invalid input format");
         }
 
     }
