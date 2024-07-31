@@ -96,3 +96,11 @@ test('should ignore numbers greater than 1000', () => {
     expect(add("1000,2000,3000")).toBe(1000); // 2000 and 3000 are ignored
     expect(add("999,1001,500")).toBe(1499); // 1001 is ignored
 });
+
+
+// New test case 11: Invalid input with missing numbers between delimiters
+test('should throw an error for missing numbers between delimiters', () => {
+    expect(() => add("1,,2")).toThrow("Invalid input format");
+    expect(() => add("1,\n2")).toThrow("Invalid input format");
+    expect(() => add("1\n,2")).toThrow("Invalid input format");
+});

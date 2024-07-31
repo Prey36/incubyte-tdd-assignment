@@ -64,14 +64,27 @@ function add(numbers) {
         throw new Error("Negative numbers not allowed: " + negativeNumbers.join(", "));
     }
 
+    //check for invalid input 
+    for (let charindex = 0; charindex < numbers.length - 1; charindex++) {
+        if (numbers[charindex] === ',' && numbers[charindex + 1] === ',') {
+            throw new Error("Invalid input format");
+        }
+    }
+    //check for last character that not be any delimiter
+    if (numbers[numbers.length - 1] === ',') {
+        throw new Error("Invalid input format");
+    }
+
     // Initialize variables for summing numbers
     let ans = 0;
     let tempNumber = '';
 
+
+
     // Iterate through the string to handle delimiters and sum the numbers
     for (let charindex = start; charindex < numbers.length; charindex++) {
-        const char = numbers[charindex];
-        if (char === '-') {
+        const char_of_numbers = numbers[charindex];
+        if (char_of_numbers === '-') {
             // Handle multi-digit negative numbers
             let tempNum = '-'; // Start with '-' to indicate negative number
             charindex++;
@@ -88,7 +101,7 @@ function add(numbers) {
             continue;
         }
         // Check if the current character is a delimiter
-        if (char === ',' || char === '\n') {
+        if (char_of_numbers === ',' || char_of_numbers === '\n') {
             if (tempNumber) {
                 let number = parseInt(tempNumber, 10);
                 // Ignore numbers greater than 1000
@@ -97,10 +110,11 @@ function add(numbers) {
                 }
                 tempNumber = '';
             }
-        } else {
+        } else if (char_of_numbers >= '0' && char_of_numbers <= '9') {
             // Build the current number from the string
-            tempNumber += char;
+            tempNumber += char_of_numbers;
         }
+
     }
 
     // Add the last number to the total if any
